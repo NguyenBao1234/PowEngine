@@ -1,5 +1,6 @@
 #include"PowEngine/Core/Entry.h"
 #include"Core/Logger/Logger.h"
+#include"PowEngine/Window/Window.h"
 
 class Game : public PowEngine::Application
 {
@@ -7,12 +8,11 @@ public:
 	Game(const PowEngine::ApplicationConfiguration& config) : PowEngine::Application(config) 
 	{
 	};
-	virtual bool Init()override 
+	virtual void OnInitClient()override 
 	{
 		LOG_INFO("Client Init");
-		return true;
 	};
-	virtual void Shutdown() override
+	virtual void OnShutdownClient() override
 	{
 		LOG_DEBUG("ShutDown");
 	};
@@ -24,5 +24,6 @@ PowEngine::Application* PowEngine::CreateApplication()
 	appConfig.Width = 800;
 	appConfig.Height = 600;
 	appConfig.Title = "POW ENGINE alpha";
+	appConfig.WindowSpec = PowEngine::EWindowPlatformSpec::GLFW;
 	return new Game(appConfig);
 }

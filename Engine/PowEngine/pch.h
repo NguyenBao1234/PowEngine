@@ -72,3 +72,6 @@ template<typename T> using Unique = std::unique_ptr <T>;
 
 //
 #define POW_FREE_MEMORY(memory) if (memory!=nullptr){ delete memory; memory = nullptr;}
+//
+#define BIND_EVENT_FUNCTION(function) [this](auto&... args) -> decltype(auto)\
+	{ return this->function(std::forward<decltype(args)>(args)...); }
