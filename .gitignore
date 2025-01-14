@@ -1,0 +1,19 @@
+**/Binares/
+Intermediate/
+Intermediates/
+
+# Pow files
+*.log
+
+# Visual Studio files and folder
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+**.csproj
+
+# Directories
+Pow/vendor/VulkanSDK
+Pownut/assets/cache
+scripts/__pycache__
