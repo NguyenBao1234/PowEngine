@@ -1,4 +1,4 @@
-//(C) POW Game std 2025
+//Copyright POW Game std
 #pragma once
 #include"Core.h"
 

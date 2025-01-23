@@ -1,10 +1,11 @@
-//(C) POW Game std 2025
+//Copyright POW Game std
 
 #pragma once
 // use by App inherits POW Application
-#include"Pow/Application.h"
-#include"Pow/Log.h"
+#include"Pow/Core/Application.h"
+#include"Pow/Core/Log.h"
+#include"Pow/Events/Event.h"
 
 // EntryPoint:
-#include"Pow/EntryPoint.h"
+#include"Pow/Core/EntryPoint.h"
 //________________________
