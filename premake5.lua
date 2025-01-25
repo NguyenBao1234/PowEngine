@@ -9,6 +9,11 @@ workspace "Pow"
 	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+-- include directories relatives to root folder (SolutionDirectory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Pow/vendor/GLFW/include"
+
+include "Pow/vendor/GlFW"
 
 project "Pow"
 	location "Pow"
@@ -18,6 +23,9 @@ project "Pow"
 	targetdir ("Binaries/"..outputdir.."/%{prj.name}")
 	objdir ("Intermediate/"..outputdir.."/%{prj.name}")
 
+	pchheader "powpch.h"
+	pchsource "Pow/src/powpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -26,8 +34,17 @@ project "Pow"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
 	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
+	}
+
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
