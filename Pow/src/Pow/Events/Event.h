@@ -66,7 +66,8 @@ namespace POW
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.bHandled |= func(static_cast<T&> & m_Event); //...= ... | ,,, ;
+				//m_Event.bHandled |= func(static_cast<T&> &m_Event); //...= ... | ,,, ;
+				m_Event.bHandled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;

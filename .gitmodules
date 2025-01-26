@@ -1,6 +1,8 @@
 [submodule "Pow/vendor/spdlog"]
 	path = Pow/vendor/spdlog
-	url = https://github.com/gabime/spdlog
+	url = https://github.com/gabime/spdlog.git
+	branch = v1.x
 [submodule "Pow/vendor/GLFW"]
 	path = Pow/vendor/GLFW
-	url = https://github.com/TheCherno/GLFW
+	url = https://github.com/TheCherno/GLFW.git
+	branch = master

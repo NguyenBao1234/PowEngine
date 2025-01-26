@@ -14,7 +14,7 @@ namespace POW
 			unsigned int Width, Height;
 			bool bVSync;
 
-			EventCallbackFn EventCallBack;
+			EventCallbackFn EventCallback;
 		};
 		WindowData wData;
 	public:
@@ -24,7 +24,7 @@ namespace POW
 		virtual void OnUpdate() override;
 		virtual uint32_t GetWidth() const override { return wData.Width; }
 		virtual uint32_t GetHeight() const override { return wData.Height; }
-		virtual void SetEventCallback(const EventCallbackFn& callback) override { wData.EventCallBack = callback; }
+		virtual void SetEventCallback(const EventCallbackFn& callback) override { wData.EventCallback = callback; }
 		virtual void SetVSync(bool enabled) override;
 		virtual bool IsVSync() const override { return wData.bVSync; }
 		virtual void* GetNativeWindow() const override { return m_Window; }

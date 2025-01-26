@@ -18,12 +18,12 @@ namespace POW
 	};
 
 	//____KEY PRESSED EVENT_____________________________________________
-	class KeyPressedEvent : KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	private:
 		bool bRepeating;
 	public:
-		KeyPressedEvent(const KeyCode keyCode) : KeyEvent(keyCode){}
+		KeyPressedEvent(const KeyCode keyCode, bool bRepeat) : KeyEvent(keyCode), bRepeating(bRepeat){}
 
 		bool IsRepeating() const { return bRepeating; }
 
@@ -37,7 +37,7 @@ namespace POW
 		EVENT_CLASS_TYPE(KeyPressed)
 	};
 	//____KEY RELEASED EVENT____________________________________________
-	class KeyReleasedEvent : KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(const KeyCode keyCode) : KeyEvent(keyCode) {}
@@ -51,10 +51,10 @@ namespace POW
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 	//____KEY TYPED EVENT____________________________________________
-	class KeyReleasedEvent : KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(const KeyCode keyCode) : KeyEvent(keyCode) {}
+		KeyTypedEvent(const KeyCode keyCode) : KeyEvent(keyCode) {}
 
 		std::string ToString() const override
 		{

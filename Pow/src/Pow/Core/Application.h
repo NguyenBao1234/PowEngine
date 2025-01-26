@@ -2,6 +2,7 @@
 #pragma once
 #include"Core.h"
 #include"Pow/Events/Event.h"
+#include"Pow/Events/ApplicationEvent.h"
 #include"Pow/Core/Window.h"
 
 namespace POW
@@ -15,6 +16,9 @@ namespace POW
 		Application();
 		virtual ~Application();
 		void Run();
+		void OnEvent(Event& e);
+	private:
+		bool OnWindowClose(WindowCloseEvent& e);
 	};
 
 	Application* CreateApplication();
