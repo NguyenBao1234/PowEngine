@@ -7,7 +7,6 @@
 
 namespace POW
 {
-
 	Window* Window::Create(const WindowProperties& props)
 	{
 		return new WindowsWindow(props);
@@ -17,7 +16,11 @@ namespace POW
 	{
 		Init(props);
 	}
-
+	//trong namespace k can chat che nhu class, nen k can khai bao trong header
+	static void LogGLFWErrorCb(int error, const char* description)
+	{
+		PE_CORE_ERR("GLFW Error ({0}): {1}", error, description);
+	}
 	static bool bGLFWInitialized = false;
 	void WindowsWindow::Init(const WindowProperties& props)
 	{
@@ -31,6 +34,7 @@ namespace POW
 			POW_CORE_ASSERT(Success, "glfw Init failed");
 			bGLFWInitialized = true;
 			PE_CORE_INFO("Initialized glfw");
+			glfwSetErrorCallback(LogGLFWErrorCb);
 			//Modern Configuration for avoiding mistakes
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); //  OpenGL 3.x
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); //  OpenGL 3.3

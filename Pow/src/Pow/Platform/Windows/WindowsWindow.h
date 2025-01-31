@@ -29,6 +29,7 @@ namespace POW
 		virtual bool IsVSync() const override { return wData.bVSync; }
 		virtual void* GetNativeWindow() const override { return m_Window; }
 
+
 	private:
 		virtual void Init(const WindowProperties& props);
 		virtual void ShutDown();

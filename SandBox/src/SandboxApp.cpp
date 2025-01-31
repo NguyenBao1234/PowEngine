@@ -1,12 +1,13 @@
-//(C) POW Game std 2025
+//Copyright POW Game std
 
 #include"Pow.h"
+#include <POW/Core/EntryPoint.h>
+#include"ExampleLayer.h"
 
 class Sanbox : public POW::Application
-{
-	
+{	
 public:
-	Sanbox(){}
+	Sanbox() { PushLayer(new ExampleLayer() ); }
 	~Sanbox(){}
 };
 

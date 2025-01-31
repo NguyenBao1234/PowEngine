@@ -24,6 +24,7 @@ namespace POW
 		{
 			glClearColor(0, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+			for (Layer* layer : mLayerStackObj) layer->OnUpdate();
 			m_Window->OnUpdate();
 		};
 	}
@@ -32,7 +33,13 @@ namespace POW
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
-		PE_CORE_INFO("{0}",e.ToString());
+		PE_CORE_INFO(" On Begin Event{0}",e.ToString());
+		//Xu ly event tu lop tren cung tro xuong ( e.g., HUD > UI > GameEnvi )
+		for (auto it = mLayerStackObj.rbegin(); it != mLayerStackObj.rend(); ++it)
+		{
+			(*it)->OnEvent(e);
+			if (e.bHandled)break;
+		}
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)

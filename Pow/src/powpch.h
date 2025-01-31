@@ -16,7 +16,7 @@
 
 #include"Pow/Core/Log.h"
 
-#ifdef HZ_PLATFORM_WINDOWS
+#ifdef POW_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
 
